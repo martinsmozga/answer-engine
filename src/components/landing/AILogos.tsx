@@ -1,11 +1,11 @@
 import { cn } from "@/lib/utils";
 
 const aiPlatforms = [
-  { name: "ChatGPT", color: "from-emerald-400 to-teal-500" },
-  { name: "Google Gemini", color: "from-blue-400 to-indigo-500" },
-  { name: "Perplexity", color: "from-cyan-400 to-blue-500" },
-  { name: "Claude", color: "from-orange-400 to-amber-500" },
-  { name: "Copilot", color: "from-violet-400 to-purple-500" },
+  { name: "ChatGPT", color: "from-pink-400 to-rose-500" },
+  { name: "Google Gemini", color: "from-fuchsia-400 to-purple-500" },
+  { name: "Perplexity", color: "from-orange-400 to-pink-500" },
+  { name: "Claude", color: "from-violet-400 to-fuchsia-500" },
+  { name: "Copilot", color: "from-rose-400 to-orange-500" },
 ];
 
 export function AILogos() {
