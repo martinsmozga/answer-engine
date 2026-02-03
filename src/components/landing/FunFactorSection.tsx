@@ -1,6 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+// Intersection Observer hook for orchestrated scroll animations
+function useInView(threshold = 0.2) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        }
+      },
+      { threshold }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return { ref, isInView };
+}
 
 // AI Platform logos as SVG components
 const ChatGPTLogo = () => (
@@ -178,14 +203,23 @@ interface PromptRowProps {
   prompts: Array<{ text: string; logo: React.FC; color: string }>;
   direction: "left" | "right";
   duration: number;
+  delay: number;
+  isInView: boolean;
 }
 
-function PromptRow({ prompts, direction, duration }: PromptRowProps) {
+function PromptRow({ prompts, direction, duration, delay, isInView }: PromptRowProps) {
   // Double the prompts for seamless loop
   const duplicatedPrompts = [...prompts, ...prompts];
 
   return (
-    <div className="relative w-full overflow-hidden py-2">
+    <div 
+      className={cn(
+        "relative w-full overflow-hidden py-2",
+        "transition-all duration-1000 ease-out",
+        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      )}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
       {/* Fade edges */}
       <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
       <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
@@ -210,27 +244,49 @@ function PromptRow({ prompts, direction, duration }: PromptRowProps) {
 }
 
 export function FunFactorSection() {
+  const { ref, isInView } = useInView(0.1);
+
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden">
+    <section ref={ref} className="relative py-24 md:py-32 overflow-hidden">
       {/* Subtle background */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/5 to-transparent" />
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 tracking-tight">
+        {/* Header with orchestrated animation */}
+        <div 
+          className={cn(
+            "text-center mb-16",
+            "transition-all duration-1000 ease-out",
+            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+          )}
+        >
+          <h2 
+            className={cn(
+              "text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 tracking-tight",
+              "transition-all duration-1000 ease-out",
+              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}
+            style={{ transitionDelay: "100ms" }}
+          >
             AI platforms are becoming the new search engines.
           </h2>
-          <p className="text-xl md:text-2xl text-muted-foreground">
+          <p 
+            className={cn(
+              "text-xl md:text-2xl text-muted-foreground",
+              "transition-all duration-1000 ease-out",
+              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}
+            style={{ transitionDelay: "250ms" }}
+          >
             Track the prompts that define your brand's relevance.
           </p>
         </div>
 
-        {/* Scrolling Prompt Rows */}
+        {/* Scrolling Prompt Rows with staggered animations */}
         <div className="flex flex-col gap-4">
-          <PromptRow prompts={promptRows[0].prompts} direction="left" duration={80} />
-          <PromptRow prompts={promptRows[1].prompts} direction="right" duration={90} />
-          <PromptRow prompts={promptRows[2].prompts} direction="left" duration={85} />
+          <PromptRow prompts={promptRows[0].prompts} direction="left" duration={80} delay={400} isInView={isInView} />
+          <PromptRow prompts={promptRows[1].prompts} direction="right" duration={90} delay={550} isInView={isInView} />
+          <PromptRow prompts={promptRows[2].prompts} direction="left" duration={85} delay={700} isInView={isInView} />
         </div>
       </div>
     </section>

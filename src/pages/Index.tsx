@@ -17,8 +17,8 @@ const Index = () => {
         <HeroSection />
         <WakeUpSection />
         <MoneyLeakSection />
-        <ExecutionSection />
         <FunFactorSection />
+        <ExecutionSection />
         <PricingSection />
         <FAQSection />
         <CTASection />
