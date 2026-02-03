@@ -3,10 +3,9 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Globe, Sparkles } from "lucide-react";
 
 const options = [
-  { id: "services", label: "My High-Ticket Services", icon: "💎" },
+  { id: "high-ticket", label: "My High-Ticket Sales", icon: "💎" },
   { id: "products", label: "My Best-Selling Products", icon: "📦" },
-  { id: "appointments", label: "My Local Appointments", icon: "📅" },
-  { id: "everything", label: "Everything I Have", icon: "🚀" },
+  { id: "services", label: "My Services", icon: "⚙️" },
 ];
 
 export function AuditInput() {
@@ -26,7 +25,7 @@ export function AuditInput() {
   }, []);
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div className="w-full max-w-2xl mx-auto px-4 sm:px-0">
       {/* Main Input Card with flowing border */}
       <div className="relative rounded-2xl p-[2px] overflow-hidden">
         {/* Animated flowing gradient border */}
@@ -49,13 +48,16 @@ export function AuditInput() {
           onMouseMove={handleMouseMove}
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
-          className="relative glass-card rounded-2xl p-6 md:p-8 bg-card"
-          style={{
-            background: isHovering 
-              ? `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, hsl(330 100% 60% / 0.08), transparent 40%), hsl(var(--card))`
-              : undefined,
-          }}
+          className="relative glass-card rounded-2xl p-5 sm:p-6 md:p-8 bg-card overflow-hidden"
         >
+          {/* Soft hue oscillation background layer */}
+          <div 
+            className="pointer-events-none absolute inset-0 rounded-2xl"
+            style={{
+              animation: 'hueOscillation 14s ease-in-out infinite',
+            }}
+          />
+
           {/* Flashlight glow overlay */}
           {isHovering && (
             <div 
@@ -73,7 +75,7 @@ export function AuditInput() {
             </div>
 
             {/* Domain Input */}
-            <div className="relative mb-6">
+            <div className="relative mb-5 sm:mb-6">
               <div className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground">
                 <Globe size={18} />
               </div>
@@ -82,7 +84,7 @@ export function AuditInput() {
                 value={domain}
                 onChange={(e) => setDomain(e.target.value)}
                 placeholder="https://your-business.com"
-                className="w-full h-14 pl-12 pr-4 bg-background/50 border border-border/50 rounded-xl text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all"
+                className="w-full h-12 sm:h-14 pl-12 pr-4 bg-background/50 border border-border/50 rounded-xl text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all text-sm sm:text-base"
               />
             </div>
 
@@ -91,26 +93,26 @@ export function AuditInput() {
               What do you want AI to sell for you?
             </p>
 
-            {/* Options Grid */}
-            <div className="grid grid-cols-2 gap-2 mb-6">
+            {/* Options Grid - Mobile stacked, 3 columns on sm+ */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 mb-5 sm:mb-6">
               {options.map((option) => (
                 <button
                   key={option.id}
                   onClick={() => setSelectedOption(option.id)}
-                  className={`flex items-center gap-2 p-3 rounded-xl border transition-all text-left text-sm ${
+                  className={`flex items-center gap-3 p-3 sm:p-3 min-h-[48px] rounded-xl border transition-all text-left text-sm ${
                     selectedOption === option.id
                       ? "border-primary bg-primary/10 text-foreground"
                       : "border-border/50 bg-background/30 text-muted-foreground hover:border-border hover:bg-background/50"
                   }`}
                 >
-                  <span className="text-lg">{option.icon}</span>
-                  <span className="line-clamp-1">{option.label}</span>
+                  <span className="text-lg sm:text-xl flex-shrink-0">{option.icon}</span>
+                  <span className="line-clamp-2 sm:line-clamp-1">{option.label}</span>
                 </button>
               ))}
             </div>
 
             {/* CTA Button */}
-            <Button variant="hero" size="xl" className="w-full group">
+            <Button variant="hero" size="xl" className="w-full group min-h-[56px] sm:min-h-[48px]">
               <span>Audit My AI Sales Potential</span>
               <ArrowRight
                 size={18}
@@ -148,6 +150,24 @@ export function AuditInput() {
           100% {
             background-position: 0% 50%;
             --flow-angle: 360deg;
+          }
+        }
+        
+        @keyframes hueOscillation {
+          0%, 100% {
+            background: 
+              radial-gradient(ellipse at 30% 20%, hsl(330 100% 60% / 0.1), transparent 50%),
+              radial-gradient(ellipse at 70% 80%, hsl(280 80% 60% / 0.08), transparent 50%);
+          }
+          33% {
+            background: 
+              radial-gradient(ellipse at 60% 30%, hsl(280 80% 60% / 0.1), transparent 50%),
+              radial-gradient(ellipse at 30% 70%, hsl(25 100% 55% / 0.08), transparent 50%);
+          }
+          66% {
+            background: 
+              radial-gradient(ellipse at 40% 70%, hsl(25 100% 55% / 0.1), transparent 50%),
+              radial-gradient(ellipse at 70% 30%, hsl(330 100% 60% / 0.08), transparent 50%);
           }
         }
       `}</style>
