@@ -33,7 +33,7 @@ const CopilotLogo = () => (
   </svg>
 );
 
-// Prompt data with AI platform info
+// Prompt data with AI platform info - 8 prompts per row for longer loops
 const promptRows = [
   {
     direction: "left",
@@ -45,6 +45,7 @@ const promptRows = [
       { text: "How to choose the right accounting software?", logo: CopilotLogo, color: "text-pink-400" },
       { text: "Best practices for customer onboarding workflows", logo: ChatGPTLogo, color: "text-emerald-400" },
       { text: "What integrations are essential for sales teams?", logo: ClaudeLogo, color: "text-orange-400" },
+      { text: "How to build an effective landing page for conversions?", logo: GeminiLogo, color: "text-blue-400" },
     ],
   },
   {
@@ -57,6 +58,7 @@ const promptRows = [
       { text: "Best invoicing software for freelancers", logo: ClaudeLogo, color: "text-orange-400" },
       { text: "How do I track customer journey touchpoints?", logo: GeminiLogo, color: "text-blue-400" },
       { text: "What CRM features improve customer retention?", logo: PerplexityLogo, color: "text-violet-400" },
+      { text: "Which tools help with competitor analysis?", logo: CopilotLogo, color: "text-pink-400" },
     ],
   },
   {
@@ -69,6 +71,7 @@ const promptRows = [
       { text: "How to integrate payment processing with my website?", logo: PerplexityLogo, color: "text-violet-400" },
       { text: "What reporting features matter most for sales?", logo: CopilotLogo, color: "text-pink-400" },
       { text: "How to migrate data between CRM systems?", logo: ChatGPTLogo, color: "text-emerald-400" },
+      { text: "What are the best A/B testing tools for websites?", logo: ClaudeLogo, color: "text-orange-400" },
     ],
   },
 ];
@@ -87,7 +90,7 @@ function PromptCard({ text, Logo, color }: PromptCardProps) {
       className={cn(
         "relative flex items-center gap-3 px-4 py-3 rounded-full",
         "bg-card/50 backdrop-blur-sm border border-border/50",
-        "transition-all duration-300 ease-out cursor-pointer whitespace-nowrap",
+        "transition-all duration-300 ease-out cursor-pointer whitespace-nowrap flex-shrink-0",
         "hover:border-primary/30 hover:bg-card/80 hover:shadow-lg hover:shadow-primary/5",
         isHovered && "scale-105 z-10"
       )}
@@ -118,10 +121,10 @@ function PromptCard({ text, Logo, color }: PromptCardProps) {
 interface PromptRowProps {
   prompts: Array<{ text: string; logo: React.FC; color: string }>;
   direction: "left" | "right";
-  speed?: number;
+  duration: number;
 }
 
-function PromptRow({ prompts, direction, speed = 60 }: PromptRowProps) {
+function PromptRow({ prompts, direction, duration }: PromptRowProps) {
   // Double the prompts for seamless loop
   const duplicatedPrompts = [...prompts, ...prompts];
 
@@ -132,12 +135,9 @@ function PromptRow({ prompts, direction, speed = 60 }: PromptRowProps) {
       <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
       
       <div
-        className={cn(
-          "flex gap-4",
-          direction === "left" ? "animate-scroll-left" : "animate-scroll-right"
-        )}
+        className="flex gap-4 will-change-transform"
         style={{
-          animationDuration: `${speed}s`,
+          animation: `${direction === "left" ? "scroll-left" : "scroll-right"} ${duration}s linear infinite`,
         }}
       >
         {duplicatedPrompts.map((prompt, index) => (
@@ -172,14 +172,9 @@ export function FunFactorSection() {
 
         {/* Scrolling Prompt Rows */}
         <div className="flex flex-col gap-4">
-          {promptRows.map((row, index) => (
-            <PromptRow
-              key={index}
-              prompts={row.prompts}
-              direction={row.direction as "left" | "right"}
-              speed={50 + index * 10} // Slightly different speeds for visual interest
-            />
-          ))}
+          <PromptRow prompts={promptRows[0].prompts} direction="left" duration={80} />
+          <PromptRow prompts={promptRows[1].prompts} direction="right" duration={90} />
+          <PromptRow prompts={promptRows[2].prompts} direction="left" duration={85} />
         </div>
       </div>
     </section>
