@@ -70,12 +70,12 @@ function AISimulation() {
       <div className="absolute -inset-8 bg-gradient-to-r from-primary/20 via-violet-500/15 to-orange-500/20 rounded-[2rem] blur-3xl opacity-50" />
       <div className="absolute -inset-4 bg-gradient-to-br from-primary/10 to-transparent rounded-3xl blur-xl opacity-70" />
       
-      {/* Main card with depth shadow */}
+      {/* Main card with depth shadow - dark theme */}
       <div 
         className={cn(
-          "relative bg-white rounded-2xl overflow-hidden",
-          "shadow-[0_20px_80px_-15px_rgba(0,0,0,0.3)]",
-          "border border-gray-200/50",
+          "relative bg-[#212121] rounded-2xl overflow-hidden",
+          "shadow-[0_20px_80px_-15px_rgba(0,0,0,0.5)]",
+          "border border-white/10",
           "transition-all duration-1000",
           isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
         )}
@@ -84,13 +84,13 @@ function AISimulation() {
         <div className="p-6 pb-3 flex justify-end">
           <div 
             className={cn(
-              "bg-gray-100 rounded-2xl rounded-tr-sm px-5 py-3.5 max-w-sm",
+              "bg-[#2f2f2f] rounded-2xl rounded-tr-sm px-5 py-3.5 max-w-sm",
               "shadow-sm",
               "transition-all duration-700 delay-200",
               isInView ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
             )}
           >
-            <p className="text-gray-800 text-sm font-medium">What are the best CRMs for Startups?</p>
+            <p className="text-white text-sm font-medium">What are the best CRMs for Startups?</p>
           </div>
         </div>
         
@@ -106,7 +106,7 @@ function AISimulation() {
                 isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               )}
             >
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-gray-300 text-sm leading-relaxed">
                 Choosing the right CRM really comes down to how your startup sells, grows, and automates. Here's a curated breakdown of the top CRM platforms for startups in 2025:
               </p>
               
@@ -117,21 +117,21 @@ function AISimulation() {
                     className={cn(
                       "relative transition-all duration-500",
                       brand.highlighted 
-                        ? "pl-4 border-l-[3px] border-primary bg-gradient-to-r from-primary/8 via-primary/4 to-transparent -mx-2 px-5 py-4 rounded-xl shadow-sm" 
-                        : "pl-4 border-l-2 border-gray-200 hover:border-gray-300"
+                        ? "pl-4 border-l-[3px] border-primary bg-gradient-to-r from-primary/15 via-primary/5 to-transparent -mx-2 px-5 py-4 rounded-xl" 
+                        : "pl-4 border-l-2 border-white/20 hover:border-white/40"
                     )}
                     style={{ transitionDelay: `${600 + index * 150}ms` }}
                   >
                     <div className="flex items-center gap-2.5 mb-1.5">
                       <span className="text-lg">{brand.icon}</span>
-                      <h4 className="font-semibold text-gray-900 text-sm">{brand.name}</h4>
+                      <h4 className="font-semibold text-white text-sm">{brand.name}</h4>
                       {brand.highlighted && (
                         <span className="text-[10px] px-2.5 py-1 rounded-full bg-primary text-white font-semibold uppercase tracking-wide shadow-sm">
                           You're here
                         </span>
                       )}
                     </div>
-                    <p className="text-gray-600 text-sm leading-relaxed">{brand.description}</p>
+                    <p className="text-gray-400 text-sm leading-relaxed">{brand.description}</p>
                   </div>
                 ))}
               </div>
