@@ -87,33 +87,89 @@ function PromptCard({ text, Logo, color }: PromptCardProps) {
 
   return (
     <div
-      className={cn(
-        "relative flex items-center gap-3 px-4 py-3 rounded-full",
-        "bg-card/50 backdrop-blur-sm border border-border/50",
-        "transition-all duration-300 ease-out cursor-pointer whitespace-nowrap flex-shrink-0",
-        "hover:border-primary/30 hover:bg-card/80 hover:shadow-lg hover:shadow-primary/5",
-        isHovered && "scale-105 z-10"
-      )}
+      className="relative rounded-full p-[1.5px] overflow-hidden flex-shrink-0 cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <span className={cn("flex-shrink-0", color)}>
-        <Logo />
-      </span>
-      <span className="text-sm text-muted-foreground">{text}</span>
-      
-      {/* Track Prompt Button - appears on hover */}
-      <div
+      {/* Animated flowing gradient border - like hero section */}
+      <div 
         className={cn(
-          "absolute right-2 flex items-center gap-1 px-3 py-1 rounded-full",
-          "bg-primary text-primary-foreground text-xs font-medium",
-          "transition-all duration-300 ease-out",
-          isHovered ? "opacity-100 translate-x-0" : "opacity-0 translate-x-2 pointer-events-none"
+          "absolute inset-0 rounded-full transition-opacity duration-300",
+          isHovered ? "opacity-80" : "opacity-40"
+        )}
+        style={{
+          background: `linear-gradient(var(--flow-angle, 0deg), 
+            hsl(330 100% 60% / 0.8), 
+            hsl(280 80% 60% / 0.6), 
+            hsl(25 100% 55% / 0.5), 
+            hsl(330 100% 60% / 0.8))`,
+          backgroundSize: '300% 300%',
+          animation: 'flowGradient 8s ease-in-out infinite',
+        }}
+      />
+      
+      {/* Inner card content */}
+      <div 
+        className={cn(
+          "relative flex items-center gap-3 px-4 py-2.5 rounded-full",
+          "bg-card/90 backdrop-blur-sm",
+          "transition-all duration-300 ease-out whitespace-nowrap",
         )}
       >
-        <Plus size={12} />
-        <span>Track Prompt</span>
+        {/* Logo - always visible */}
+        <span className={cn("flex-shrink-0 transition-all duration-300", color, isHovered && "opacity-50")}>
+          <Logo />
+        </span>
+        
+        {/* Text - blurs on hover */}
+        <span 
+          className={cn(
+            "text-sm text-muted-foreground transition-all duration-300",
+            isHovered && "blur-[3px] opacity-30"
+          )}
+        >
+          {text}
+        </span>
+        
+        {/* Track Prompt Button - centered overlay on hover */}
+        <div
+          className={cn(
+            "absolute inset-0 flex items-center justify-center rounded-full",
+            "transition-all duration-300 ease-out",
+            isHovered ? "opacity-100" : "opacity-0 pointer-events-none"
+          )}
+        >
+          <div className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-primary/90 text-primary-foreground text-sm font-medium shadow-lg">
+            <Plus size={14} />
+            <span>Track Prompt</span>
+          </div>
+        </div>
       </div>
+
+      <style>{`
+        @keyframes flowGradient {
+          0% {
+            background-position: 0% 50%;
+            --flow-angle: 0deg;
+          }
+          25% {
+            background-position: 50% 100%;
+            --flow-angle: 90deg;
+          }
+          50% {
+            background-position: 100% 50%;
+            --flow-angle: 180deg;
+          }
+          75% {
+            background-position: 50% 0%;
+            --flow-angle: 270deg;
+          }
+          100% {
+            background-position: 0% 50%;
+            --flow-angle: 360deg;
+          }
+        }
+      `}</style>
     </div>
   );
 }
