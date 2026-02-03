@@ -1,144 +1,154 @@
 
-# Redesign MoneyLeakSection: The "HOW" Process Section
+# Redesign ExecutionSection: Social Proof Section
 
 ## Overview
-Transform the current "3 Ways You're Losing Easy Money" section from a problem-focused layout into a solution-focused "HOW" section inspired by peec.ai's "Key Features" design. This will showcase Aisearche's process in a clean, step-by-step format with visual indicators and interactive elements.
+Transform the current "The Only Tool You Need to Win the Answer Era" section from a step-by-step execution breakdown into a compelling Social Proof section. This will combine elements from peec.ai (clean testimonials), scrunch.com (featured testimonial quotes), and azoma.ai (logo marquee + trust signals).
 
 ---
 
-## Design Approach (Inspired by peec.ai)
+## Design Inspiration Analysis
 
-The new section will follow peec.ai's pattern of:
-1. Clean, minimal layout with generous whitespace
-2. Step-by-step feature walkthrough
-3. Large typography with supporting visuals
-4. Interactive mock UI elements showing the product in action
-5. Alternating left/right layout for visual rhythm
+| Source | Key Elements to Adopt |
+|--------|----------------------|
+| **peec.ai** | Clean, minimal layout with dashboard screenshot visuals |
+| **scrunch.com** | "Trusted by 500+ companies" headline + testimonial cards with quotes, photos, names, and titles |
+| **azoma.ai** | Auto-scrolling logo marquee, gradient accents on dark background |
 
 ---
 
 ## New Section Structure
 
 ### Header
-- Section tag: "HOW IT WORKS"
-- Main headline: "Turn AI Search Insights Into New Customers"
-- Subheadline: Brief value proposition
+- Section badge: "TRUSTED BY INNOVATORS"
+- Main headline: "Join Businesses Already Winning the AI Search Game"
+- Subheadline: Brief trust statement
 
-### 3 Key Steps (replacing the 3 "leaks")
+### Components
 
-| Step | Title | Description | Visual Element |
-|------|-------|-------------|----------------|
-| 01 | **Scan Your Presence** | We analyze how AI platforms currently see (or don't see) your business | Mock audit scan interface with live status indicators |
-| 02 | **Translate for AI** | We structure your content so AI reads it as trusted facts | Knowledge graph/entity visualization |
-| 03 | **Monitor & Scale** | Track your AI visibility weekly and discover new revenue opportunities | Growth chart with trending metrics |
+1. **Logo Marquee** (inspired by azoma.ai)
+   - Auto-scrolling horizontal strip of company logos
+   - Infinite CSS animation with seamless loop
+   - Glass-morphism container with subtle gradient border
+
+2. **Featured Testimonial** (inspired by scrunch.com)
+   - Large quote in elegant typography
+   - Avatar, name, title, and company
+   - Highlighted key result (e.g., "260% visibility growth")
+   - Glass-card with subtle glow effect
+
+3. **Testimonial Grid** (3 cards on desktop, stacked on mobile)
+   - Quote text with highlighted metrics
+   - Avatar, name, title
+   - Star ratings or result badges
+   - Hover animations
+
+4. **Trust Metrics Bar**
+   - Key stats: "500+ businesses", "10M+ AI queries analyzed", "98% satisfaction"
+   - Animated count-up on scroll
+   - Inline badges with gradient accents
 
 ---
 
 ## Technical Implementation
 
 ### File Modified
-`src/components/landing/MoneyLeakSection.tsx`
+`src/components/landing/ExecutionSection.tsx`
 
-### Layout Changes
-- Full-width alternating rows (image left/text right, then swap)
-- Each step in its own container with generous padding
-- Large step numbers with gradient treatment
-- Glass-morphism cards for the visual elements
-- Scroll-triggered animations using Intersection Observer
-
-### Visual Elements for Each Step
-
-**Step 1 - Scan Interface Mock:**
-```text
-+----------------------------------+
-|  Audit in Progress...      [Live]|
-|  --------------------------------|
-|  [*] robots.txt accessible       |
-|  [*] Structured data found       |
-|  [!] Pricing not machine-readable|
-|  [x] AI crawl blocked            |
-+----------------------------------+
-```
-
-**Step 2 - Knowledge Graph:**
-```text
-+----------------------------------+
-|  Entity Mapping            [Live]|
-|  --------------------------------|
-|  Business --> Services --> Price |
-|      |           |               |
-|   Location    Reviews            |
-+----------------------------------+
-```
-
-**Step 3 - Growth Metrics:**
-```text
-+----------------------------------+
-|  Weekly Performance        [Live]|
-|  --------------------------------|
-|  AI Visibility    +38%    ↗      |
-|  Brand Mentions   156     ↗      |
-|  Intent Signals   24 new         |
-+----------------------------------+
-```
-
-### Animations
-- Step numbers count up on scroll (reuse useCountUp hook from WakeUpSection)
-- Cards fade in with slight slide-up effect
-- Live status indicators pulse gently
-- Progress lines between steps animate on scroll
-
-### Mobile Responsiveness
-- Stacked layout on mobile (visual above text)
-- Full-width cards with proper padding
-- Smaller typography scales appropriately
-
----
-
-## Color Scheme
-- Pink (#F62682) for primary accents and step numbers
-- Violet for secondary highlights
-- Orange for success indicators and CTAs
-- Dark glass-morphism backgrounds
-- No blue anywhere
-
----
-
-## Code Structure
-
+### Data Structure
 ```typescript
-const steps = [
+const testimonials = [
   {
-    number: "01",
-    title: "Scan Your Presence",
-    description: "We analyze how AI platforms currently see your business...",
-    visual: <ScanVisual />, // Internal component
+    quote: "Within weeks, we went from invisible to cited right alongside the biggest players in our space.",
+    highlight: "4x growth in AI visibility",
+    author: "Sarah Chen",
+    title: "Head of Growth",
+    company: "TechScale",
+    avatar: "SC", // Initials for placeholder
   },
-  // ... steps 02, 03
+  // ... 2 more testimonials
 ];
 
-export function MoneyLeakSection() {
-  return (
-    <section>
-      {/* Header */}
-      {/* Steps with alternating layout */}
-      {steps.map((step, index) => (
-        <div className={index % 2 === 0 ? "flex-row" : "flex-row-reverse"}>
-          {/* Visual */}
-          {/* Content */}
-        </div>
-      ))}
-    </section>
-  );
+const companyLogos = [
+  "Acme Corp", "TechStart", "GrowthLabs", "ScaleUp", "InnovateCo"
+];
+
+const trustMetrics = [
+  { value: 500, suffix: "+", label: "Businesses Trust Us" },
+  { value: 10, suffix: "M+", label: "AI Queries Analyzed" },
+  { value: 98, suffix: "%", label: "Client Satisfaction" },
+];
+```
+
+### Logo Marquee Animation
+```css
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.logo-marquee {
+  animation: marquee 30s linear infinite;
 }
 ```
+
+### Mobile Responsiveness
+- Logo marquee: Full width, slower animation on mobile
+- Featured testimonial: Full width, centered
+- Grid: `grid-cols-1 md:grid-cols-3`
+- Trust metrics: Stacked on mobile, inline on desktop
 
 ---
 
 ## Visual Hierarchy
 
-1. Section badge and headline (centered)
-2. Step 01 - Full width row with scan interface
-3. Step 02 - Full width row (reversed) with knowledge graph
-4. Step 03 - Full width row with metrics dashboard
-5. Connecting visual elements between steps (vertical line with dots)
+1. **Section Badge + Headline** (centered)
+2. **Logo Marquee Strip** (full-width, edge-to-edge)
+3. **Featured Testimonial Card** (centered, large)
+4. **Testimonial Grid** (3 cards)
+5. **Trust Metrics Bar** (centered, subtle)
+
+---
+
+## Color Scheme
+- Pink (#F62682) for highlighted quotes and metrics
+- Violet for secondary accents
+- Orange for star ratings and success badges
+- Dark glass-morphism backgrounds
+- Gradient borders on hover
+
+---
+
+## Component Structure
+
+```text
+ExecutionSection
++-- Header (badge, headline, subheadline)
++-- LogoMarquee (auto-scrolling company logos)
++-- FeaturedTestimonial (large quote card)
++-- TestimonialGrid (3 cards)
++-- TrustMetricsBar (animated stats)
+```
+
+---
+
+## Animations
+
+| Element | Animation |
+|---------|-----------|
+| Logo Marquee | Continuous horizontal scroll (30s loop) |
+| Testimonial Cards | Fade-in on scroll + hover-lift |
+| Trust Metrics | Count-up animation using IntersectionObserver |
+| Avatar Rings | Subtle gradient border pulse |
+
+---
+
+## Sample Testimonials (Placeholder)
+
+**Featured:**
+> "Aisearche showed us exactly what AI was seeing - and what we were missing. It was like flipping on a light switch. Within weeks, we went from invisible to cited right alongside the biggest players in our space."
+> - **Maria Rodriguez**, VP of Marketing, GrowthLabs
+
+**Grid Cards:**
+1. "4x growth in AI visibility within 2 months" - Head of Growth, TechScale
+2. "Finally understand why we weren't showing up in AI answers" - CMO, InnovateCo  
+3. "The weekly reports alone are worth the investment" - Founder, ScaleUp
