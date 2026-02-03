@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import { Check, ArrowRight, Search, TrendingUp, Target, Zap } from "lucide-react";
+import { Check } from "lucide-react";
 
 // Intersection Observer hook for scroll animations
 function useInView(threshold = 0.2) {
@@ -46,24 +46,6 @@ const aiResponseBrands = [
     icon: "⚫",
     description: "Zero is built for founders who want a streamlined CRM without the usual bloat. It focuses on speed, simplicity, and essential deal tracking.",
     highlighted: false,
-  },
-];
-
-const features = [
-  {
-    title: "Track Your Visibility",
-    description: "Monitor exactly where and how AI platforms mention your brand across every response.",
-    icon: Search,
-  },
-  {
-    title: "Analyze Citation Sources",
-    description: "Discover which sources AI models pull from—and position your content to become one.",
-    icon: Target,
-  },
-  {
-    title: "Actionable Insights",
-    description: "Get clear recommendations to improve your rankings in AI-generated answers.",
-    icon: Zap,
   },
 ];
 
@@ -167,78 +149,9 @@ function AISimulation() {
             isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           )}
         >
-          This is where visibility matters
+          Live AI Response Preview
         </div>
       </div>
-    </div>
-  );
-}
-
-// Feature Card with depth and pop-out effect
-function FeatureCard({ feature, index }: { feature: typeof features[0]; index: number }) {
-  const Icon = feature.icon;
-  const { ref, isInView } = useInView(0.2);
-  
-  return (
-    <div 
-      ref={ref}
-      className={cn(
-        "group relative",
-        "transition-all duration-700",
-        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      )}
-      style={{ transitionDelay: `${index * 150}ms` }}
-    >
-      {/* Hover glow */}
-      <div className="absolute -inset-2 bg-gradient-to-br from-primary/15 to-violet-500/15 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
-      
-      <div 
-        className={cn(
-          "relative bg-card/60 backdrop-blur-md rounded-xl p-6 border border-border/50",
-          "hover:border-primary/40 transition-all duration-300",
-          "hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1",
-          index === 1 && "md:-translate-y-6"
-        )}
-      >
-        {/* Icon with gradient bg */}
-        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 via-violet-500/15 to-orange-500/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-inner">
-          <Icon className="w-6 h-6 text-primary" />
-        </div>
-        
-        <h3 className="text-lg font-semibold text-foreground mb-2">{feature.title}</h3>
-        <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
-      </div>
-    </div>
-  );
-}
-
-// Industry stats with clean design
-function IndustryStats() {
-  const { ref, isInView } = useInView(0.2);
-  const stats = [
-    { value: "60%", label: "of searches end without a click", source: "Sparktoro" },
-    { value: "1B+", label: "weekly users on ChatGPT alone", source: "OpenAI" },
-    { value: "40%", label: "of Gen Z prefers AI search", source: "Adobe" },
-  ];
-  
-  return (
-    <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-      {stats.map((stat, index) => (
-        <div 
-          key={index}
-          className={cn(
-            "text-center p-6 rounded-xl bg-card/40 border border-border/40 backdrop-blur-sm",
-            "hover:border-primary/30 transition-all duration-300",
-            "transition-all duration-700",
-            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          )}
-          style={{ transitionDelay: `${index * 100}ms` }}
-        >
-          <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">{stat.value}</div>
-          <p className="text-sm text-foreground/80 mb-1">{stat.label}</p>
-          <p className="text-xs text-muted-foreground">Source: {stat.source}</p>
-        </div>
-      ))}
     </div>
   );
 }
@@ -249,7 +162,7 @@ export function ExecutionSection() {
   return (
     <section 
       ref={sectionRef}
-      id="industry-shift" 
+      id="social-proof" 
       className="relative py-24 md:py-32 overflow-hidden"
     >
       {/* Background elements */}
@@ -267,14 +180,15 @@ export function ExecutionSection() {
           )}
         >
           <span className="inline-block px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary bg-primary/10 rounded-full mb-5">
-            The New Reality
+            Built for This Moment
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-5 leading-tight">
-            When AI answers, are you
-            <span className="gradient-text"> in the response?</span>
+            This is
+            <span className="gradient-text"> exactly </span>
+            what we built
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Every day, millions ask AI for recommendations. Your brand is either cited—or invisible.
+          <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            A tool that shows you how AI sees your brand—and gives you the playbook to become the answer.
           </p>
         </div>
         
@@ -285,28 +199,31 @@ export function ExecutionSection() {
             <AISimulation />
           </div>
           
-          {/* Right: Problem Statement */}
+          {/* Right: The Real Story */}
           <div 
             className={cn(
-              "order-1 lg:order-2 space-y-6",
+              "order-1 lg:order-2 space-y-8",
               "transition-all duration-700 delay-200",
               isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             )}
           >
-            <div className="space-y-4">
+            <div className="space-y-5">
               <h3 className="text-2xl md:text-3xl font-bold text-foreground leading-tight">
-                AI is the new search engine.
+                We built this because we needed it ourselves.
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                ChatGPT, Perplexity, Claude, and Gemini are now where your customers start their buying journey. Traditional SEO alone won't get you cited in AI responses.
+                When we saw traffic from AI platforms overtaking traditional search for our own projects, we had no way to understand it. No dashboard. No insights. No strategy.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                So we built one. What you see here is the same tool we use internally—now available to every brand navigating this shift.
               </p>
             </div>
             
-            <div className="space-y-3 pt-2">
+            <div className="space-y-4 pt-2">
               {[
-                "60% of Google searches now end with zero clicks",
-                "AI platforms curate 3-5 recommendations, not 10 blue links",
-                "Being cited in AI responses drives qualified, high-intent traffic",
+                "Real-time monitoring of AI mentions across platforms",
+                "Actionable data—not vanity metrics",
+                "Built by practitioners, not observers",
               ].map((point, index) => (
                 <div 
                   key={index} 
@@ -319,63 +236,67 @@ export function ExecutionSection() {
                 </div>
               ))}
             </div>
-            
-            <blockquote className="border-l-2 border-primary/50 pl-5 py-3 mt-8 bg-primary/5 rounded-r-lg">
-              <p className="text-sm text-foreground/80 italic leading-relaxed">
-                "The future of search is not about lists of links. It's about getting the answer."
-              </p>
-              <footer className="mt-2 text-xs text-primary font-semibold">
-                — Sam Altman, CEO of OpenAI
-              </footer>
-            </blockquote>
           </div>
         </div>
         
-        {/* Features Grid */}
-        <div className="mb-20">
-          <div 
-            className={cn(
-              "text-center mb-12",
-              "transition-all duration-700",
-              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            )}
-          >
-            <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3">
-              See exactly where you stand
-            </h3>
-            <p className="text-muted-foreground">
-              Track, analyze, and improve your visibility across all AI platforms.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            {features.map((feature, index) => (
-              <FeatureCard key={feature.title} feature={feature} index={index} />
-            ))}
-          </div>
-        </div>
-        
-        {/* Industry Stats */}
-        <IndustryStats />
-        
-        {/* Bottom CTA */}
+        {/* The Shift Section */}
         <div 
           className={cn(
-            "text-center mt-16",
-            "transition-all duration-700 delay-300",
+            "max-w-4xl mx-auto mb-20",
+            "transition-all duration-700 delay-100",
             isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           )}
         >
-          <p className="text-muted-foreground mb-5">
-            The question isn't <em>if</em> this matters — it's whether you're ready.
-          </p>
-          <a 
-            href="#audit" 
-            className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-semibold transition-colors group"
-          >
-            See where you stand
-            <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
-          </a>
+          <div className="text-center mb-10">
+            <h3 className="text-xl md:text-2xl font-semibold text-foreground">
+              The industry is shifting. We're ready.
+            </h3>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="p-6 rounded-xl bg-card/40 border border-border/40 backdrop-blur-sm hover:border-primary/30 transition-all duration-300">
+              <p className="text-foreground/80 leading-relaxed mb-4">
+                "60% of searches now end without a click. If you aren't the cited answer, you aren't seen at all."
+              </p>
+              <p className="text-sm text-muted-foreground">
+                — HubSpot Marketing Trends Report
+              </p>
+            </div>
+            
+            <div className="p-6 rounded-xl bg-card/40 border border-border/40 backdrop-blur-sm hover:border-primary/30 transition-all duration-300">
+              <p className="text-foreground/80 leading-relaxed mb-4">
+                "We are moving from a world of search engine optimization to 'Search Everywhere Optimization.'"
+              </p>
+              <p className="text-sm text-muted-foreground">
+                — Neil Patel, CMO & Co-Founder of NP Digital
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        {/* Full-Width Closing Quote */}
+        <div 
+          className={cn(
+            "relative py-16 md:py-20",
+            "transition-all duration-1000 delay-300",
+            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          )}
+        >
+          {/* Quote background glow */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent" />
+          
+          <blockquote className="relative text-center max-w-5xl mx-auto px-4">
+            <p className="text-2xl md:text-3xl lg:text-4xl font-medium text-foreground leading-relaxed md:leading-relaxed">
+              "The future of search is not about lists of links. It's about getting the answer. It's about a shift from
+              <span className="gradient-text font-semibold"> search engines </span>
+              to
+              <span className="gradient-text font-semibold"> answer engines.</span>"
+            </p>
+            <footer className="mt-8 flex flex-col items-center gap-1">
+              <span className="text-lg font-semibold text-foreground">Sam Altman</span>
+              <span className="text-sm text-muted-foreground">CEO of OpenAI</span>
+            </footer>
+          </blockquote>
         </div>
       </div>
     </section>
