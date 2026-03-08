@@ -8,15 +8,15 @@ import { ArrowLeft, Clock, Calendar, RefreshCw, User, ExternalLink, CheckCircle,
 /* ── static data ───────────────────────────────── */
 
 const defined = {
-  title: "How AI Search Engines Recommend Brands — And How to Get Cited",
+  title: "How AI Travel Assistants Recommend Hotels & Restaurants — And How to Get Cited",
   description:
-    "AI search optimization (AEO) is the practice of structuring your website so AI platforms like ChatGPT, Perplexity, and Google AI Overviews can discover, extract, and cite your brand. This guide covers entity clarity, structured data, content architecture, and monitoring — everything you need to move from invisible to recommended.",
+    "AI travel optimization is the practice of structuring your tourism website so AI platforms like ChatGPT, Perplexity, and Google AI Overviews can discover, extract, and recommend your hotel, restaurant, tour, or travel business to travelers. This guide covers entity clarity, structured data, content architecture, and monitoring — everything tourism businesses need to move from invisible to recommended.",
   author: {
     name: "Aisearche Editorial",
-    role: "AI Search Strategy Team",
+    role: "AI Tourism Strategy Team",
     avatar: "A",
-    bio: "The Aisearche Editorial team comprises AI search strategists, data scientists, and former search engineers from Google and Microsoft. With over 40 combined years of experience in search technology, the team publishes original research on AI retrieval systems, generative engine optimization, and brand citation patterns across ChatGPT, Perplexity, and Google AI Overviews.",
-    credentials: ["Former Google Search Quality team", "Published in ACM SIGIR", "Contributors to Schema.org"],
+    bio: "The Aisearche Editorial team comprises AI search strategists, tourism technology specialists, and former search engineers from Google and Microsoft. With over 40 combined years of experience in search and travel technology, the team publishes original research on AI retrieval systems, generative engine optimization, and tourism business citation patterns across ChatGPT, Perplexity, and Google AI Overviews.",
+    credentials: ["Former Google Search Quality team", "Published in ACM SIGIR", "Tourism Tech Advisory Board"],
   },
   reviewedBy: "Dr. Sarah Chen, PhD in Information Retrieval — MIT CSAIL",
   readTime: "18 min read",
