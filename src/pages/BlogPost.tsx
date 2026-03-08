@@ -101,7 +101,7 @@ function JsonLdScripts() {
       "@type": "Organization",
       name: "Aisearche",
       url: "https://aisearche.com",
-      description: "Aisearche is the AI sales engine that monitors how AI platforms recommend brands and optimizes your presence across ChatGPT, Perplexity, and Google AI Overviews.",
+      description: "Aisearche is the AI visibility platform for tourism and travel businesses, helping hotels, restaurants, and tour operators get recommended by AI travel assistants like ChatGPT, Perplexity, and Google AI Overviews.",
       sameAs: ["https://twitter.com/aisearche", "https://linkedin.com/company/aisearche"],
     },
     publisher: {
