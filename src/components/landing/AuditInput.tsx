@@ -118,32 +118,6 @@ export function AuditInput() {
         </div>
       </div>
 
-      <style>{`
-        @keyframes flowGradient {
-          0% { background-position: 0% 50%; --flow-angle: 0deg; }
-          25% { background-position: 50% 100%; --flow-angle: 90deg; }
-          50% { background-position: 100% 50%; --flow-angle: 180deg; }
-          75% { background-position: 50% 0%; --flow-angle: 270deg; }
-          100% { background-position: 0% 50%; --flow-angle: 360deg; }
-        }
-        @keyframes hueOscillation {
-          0%, 100% {
-            background: 
-              radial-gradient(ellipse at 30% 20%, hsl(43 90% 55% / 0.08), transparent 50%),
-              radial-gradient(ellipse at 70% 80%, hsl(38 80% 45% / 0.06), transparent 50%);
-          }
-          33% {
-            background: 
-              radial-gradient(ellipse at 60% 30%, hsl(38 80% 45% / 0.08), transparent 50%),
-              radial-gradient(ellipse at 30% 70%, hsl(25 90% 50% / 0.06), transparent 50%);
-          }
-          66% {
-            background: 
-              radial-gradient(ellipse at 40% 70%, hsl(25 90% 50% / 0.08), transparent 50%),
-              radial-gradient(ellipse at 70% 30%, hsl(43 90% 55% / 0.06), transparent 50%);
-          }
-        }
-      `}</style>
     </div>
   );
 }
