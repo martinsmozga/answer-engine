@@ -114,7 +114,7 @@ export function Header() {
                   <a
                     key={link.href}
                     href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={(e) => { handleAnchorClick(e, link.href); setIsMobileMenuOpen(false); }}
                     className="px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-white/5 rounded-lg transition-colors"
                   >
                     {link.label}
