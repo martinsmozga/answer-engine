@@ -9,6 +9,7 @@ const navLinks = [
   { label: "Execution", href: "#execution" },
   { label: "Pricing", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
+  { label: "Blog", href: "/blog", isRoute: true },
 ];
 
 export function Header() {
