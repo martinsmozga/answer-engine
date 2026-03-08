@@ -108,15 +108,6 @@ function PromptCard({ text, Logo, color }: PromptCardProps) {
           </div>
         </div>
       </div>
-      <style>{`
-        @keyframes flowGradient {
-          0% { background-position: 0% 50%; --flow-angle: 0deg; }
-          25% { background-position: 50% 100%; --flow-angle: 90deg; }
-          50% { background-position: 100% 50%; --flow-angle: 180deg; }
-          75% { background-position: 50% 0%; --flow-angle: 270deg; }
-          100% { background-position: 0% 50%; --flow-angle: 360deg; }
-        }
-      `}</style>
     </div>
   );
 }

@@ -1,19 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Scan, Network, TrendingUp, Check, AlertTriangle, X } from "lucide-react";
-
-function useInView(threshold: number = 0.3) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isInView, setIsInView] = useState(false);
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setIsInView(true); },
-      { threshold }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [threshold]);
-  return { ref, isInView };
-}
+import { useInView } from "@/hooks/use-in-view";
 
 function ScanVisual() {
   const [progress, setProgress] = useState(0);
