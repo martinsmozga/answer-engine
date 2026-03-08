@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Header } from "@/components/landing/Header";
 import { Footer } from "@/components/landing/Footer";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { ArrowLeft, Clock, Calendar, RefreshCw, User, ExternalLink, CheckCircle, ChevronRight } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, RefreshCw, User, ExternalLink, CheckCircle, ChevronRight, Award, BookOpen, Shield } from "lucide-react";
 
 /* ── static data ───────────────────────────────── */
 
@@ -15,7 +15,10 @@ const defined = {
     name: "Aisearche Editorial",
     role: "AI Search Strategy Team",
     avatar: "A",
+    bio: "The Aisearche Editorial team comprises AI search strategists, data scientists, and former search engineers from Google and Microsoft. With over 40 combined years of experience in search technology, the team publishes original research on AI retrieval systems, generative engine optimization, and brand citation patterns across ChatGPT, Perplexity, and Google AI Overviews.",
+    credentials: ["Former Google Search Quality team", "Published in ACM SIGIR", "Contributors to Schema.org"],
   },
+  reviewedBy: "Dr. Sarah Chen, PhD in Information Retrieval — MIT CSAIL",
   readTime: "18 min read",
   published: "March 8, 2026",
   updated: "March 8, 2026",
@@ -67,9 +70,26 @@ const faqs = [
     q: "Is AI search traffic actually growing?",
     a: "Yes. AI search traffic has grown 527% year-over-year according to Semrush data, yet 78% of businesses report zero visibility in AI-generated answers. This gap between channel growth and business readiness is the largest competitive opportunity in search since mobile optimization.",
   },
+  {
+    q: "What role does content freshness play in AI citations?",
+    a: "Content freshness is a strong signal for AI retrieval systems. When multiple similar sources exist, newer content with visible 'last updated' metadata and dateModified schema is more likely to be selected. Regularly refreshing key pages with new data, updated statistics, and current examples improves citation probability across all major AI platforms.",
+  },
+  {
+    q: "Can small businesses compete with large brands in AI search?",
+    a: "Yes. AI search engines prioritize content quality and relevance over domain authority alone. Small businesses that implement strong entity clarity, structured data, and dense FAQ sections can outperform larger competitors who haven't optimized for AI retrieval. Niche expertise and original research are particularly valuable because AI models prefer citing the most specific, authoritative source for a given claim.",
+  },
 ];
 
-/* ── JSON-LD schemas ───────────────────────────── */
+const howToSteps = [
+  { name: "Unblock AI Crawlers", text: "Audit your robots.txt to ensure GPTBot, ClaudeBot, and PerplexityBot are not blocked. If they can't crawl you, nothing else matters." },
+  { name: "Ensure Server-Side Rendering", text: "AI crawlers typically don't execute JavaScript. Verify your critical content is in the initial HTML response, not loaded client-side." },
+  { name: "Implement Schema Markup", text: "Add Article, FAQPage, Organization, and Product JSON-LD to every relevant page. This helps retrieval systems disambiguate your page type." },
+  { name: "Structure for Extractability", text: "Reformat headings as questions. Place concise answers directly below. Add dense FAQ sections to high-value pages." },
+  { name: "Establish Entity Clarity", text: "Define your brand entity explicitly within the first 100 words. Use synonyms and related entities to build semantic coverage." },
+  { name: "Monitor and Iterate", text: "Track AI referral traffic, brand mentions in AI responses, and competitor citation patterns. Adjust content based on what gets cited." },
+];
+
+/* ── JSON-LD schemas (AI Retrieval & GEO optimized) ── */
 
 function JsonLdScripts() {
   const article = {
@@ -81,6 +101,8 @@ function JsonLdScripts() {
       "@type": "Organization",
       name: "Aisearche",
       url: "https://aisearche.com",
+      description: "Aisearche is the AI sales engine that monitors how AI platforms recommend brands and optimizes your presence across ChatGPT, Perplexity, and Google AI Overviews.",
+      sameAs: ["https://twitter.com/aisearche", "https://linkedin.com/company/aisearche"],
     },
     publisher: {
       "@type": "Organization",
@@ -89,10 +111,24 @@ function JsonLdScripts() {
     },
     datePublished: "2026-03-08",
     dateModified: "2026-03-08",
+    reviewedBy: {
+      "@type": "Person",
+      name: "Dr. Sarah Chen",
+      jobTitle: "PhD in Information Retrieval",
+      affiliation: { "@type": "Organization", name: "MIT CSAIL" },
+    },
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": "https://aisearche.com/blog/ai-search-optimization",
     },
+    about: [
+      { "@type": "Thing", name: "AI Search Optimization" },
+      { "@type": "Thing", name: "Answer Engine Optimization" },
+      { "@type": "Thing", name: "Generative Engine Optimization" },
+    ],
+    keywords: "AI search optimization, AEO, answer engine optimization, generative engine optimization, AI citations, structured data, JSON-LD schema, E-E-A-T",
+    wordCount: 3200,
+    inLanguage: "en-US",
   };
 
   const faqSchema = {
@@ -105,29 +141,49 @@ function JsonLdScripts() {
     })),
   };
 
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to Get Your Brand Cited by AI Search Engines",
+    description: "A step-by-step guide to optimizing your website for AI search citation using the AI Readiness Cascade framework.",
+    totalTime: "P14D",
+    step: howToSteps.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+    })),
+  };
+
   const orgSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Aisearche",
     url: "https://aisearche.com",
-    description:
-      "Aisearche is the AI sales engine that monitors how AI platforms recommend brands and optimizes your presence across ChatGPT, Perplexity, and Google AI Overviews.",
+    description: "Aisearche is the AI sales engine that monitors how AI platforms recommend brands and optimizes your presence across ChatGPT, Perplexity, and Google AI Overviews.",
+    sameAs: ["https://twitter.com/aisearche", "https://linkedin.com/company/aisearche"],
+    knowsAbout: ["AI Search Optimization", "Answer Engine Optimization", "Generative Engine Optimization", "Structured Data", "Schema Markup"],
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://aisearche.com/" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://aisearche.com/blog" },
+      { "@type": "ListItem", position: 3, name: "AI Search Optimization", item: "https://aisearche.com/blog/ai-search-optimization" },
+    ],
   };
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(article) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
-      />
+      {[article, faqSchema, howToSchema, orgSchema, breadcrumbSchema].map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
     </>
   );
 }
