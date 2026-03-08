@@ -57,7 +57,7 @@ const stats = [
     label: "trust AI recommendations",
     description: "For choosing where to stay, eat & explore",
     icon: Target,
-    color: "glow-purple" as const,
+    color: "glow-amber" as const,
   },
   {
     value: 24,
@@ -83,12 +83,12 @@ export function WakeUpSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-primary/5" />
       
       <div 
-        className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-[120px] opacity-20"
+        className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-[120px] opacity-15"
         style={{ background: "radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)", animation: "pulse 8s ease-in-out infinite" }}
       />
       <div 
-        className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-[120px] opacity-15"
-        style={{ background: "radial-gradient(circle, hsl(var(--glow-purple)) 0%, transparent 70%)", animation: "pulse 8s ease-in-out infinite 2s" }}
+        className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-[120px] opacity-10"
+        style={{ background: "radial-gradient(circle, hsl(var(--glow-amber)) 0%, transparent 70%)", animation: "pulse 8s ease-in-out infinite 2s" }}
       />
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6">
@@ -111,8 +111,8 @@ export function WakeUpSection() {
             const colorClasses = {
               primary: "text-primary border-primary/20 bg-primary/5",
               "glow-green": "text-glow-green border-glow-green/20 bg-glow-green/5",
-              "glow-purple": "text-glow-purple border-glow-purple/20 bg-glow-purple/5",
-              "glow-orange": "text-glow-orange border-glow-orange/20 bg-glow-orange/5",
+              "glow-amber": "text-amber-400 border-amber-400/20 bg-amber-400/5",
+              "glow-orange": "text-amber-500 border-amber-500/20 bg-amber-500/5",
             };
             
             return (
@@ -125,16 +125,16 @@ export function WakeUpSection() {
                     <span className={`text-5xl md:text-6xl font-bold tracking-tight ${
                       stat.color === "primary" ? "text-primary" :
                       stat.color === "glow-green" ? "text-glow-green" :
-                      stat.color === "glow-purple" ? "text-glow-purple" :
-                      "text-glow-orange"
+                      stat.color === "glow-amber" ? "text-amber-400" :
+                      "text-amber-500"
                     }`}>
                       {counts[index]}
                     </span>
                     <span className={`text-3xl md:text-4xl font-bold ${
                       stat.color === "primary" ? "text-primary" :
                       stat.color === "glow-green" ? "text-glow-green" :
-                      stat.color === "glow-purple" ? "text-glow-purple" :
-                      "text-glow-orange"
+                      stat.color === "glow-amber" ? "text-amber-400" :
+                      "text-amber-500"
                     }`}>
                       {stat.suffix}
                     </span>

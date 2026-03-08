@@ -1,11 +1,11 @@
 import { cn } from "@/lib/utils";
 
 const aiPlatforms = [
-  { name: "ChatGPT", color: "from-pink-400 to-rose-500" },
-  { name: "Google Gemini", color: "from-fuchsia-400 to-purple-500" },
-  { name: "Perplexity", color: "from-orange-400 to-pink-500" },
-  { name: "Claude", color: "from-violet-400 to-fuchsia-500" },
-  { name: "Copilot", color: "from-rose-400 to-orange-500" },
+  { name: "ChatGPT", color: "from-amber-400 to-yellow-600" },
+  { name: "Google Gemini", color: "from-yellow-500 to-amber-600" },
+  { name: "Perplexity", color: "from-amber-300 to-yellow-500" },
+  { name: "Claude", color: "from-yellow-400 to-amber-500" },
+  { name: "Copilot", color: "from-amber-500 to-yellow-700" },
 ];
 
 export function AILogos() {
@@ -16,7 +16,7 @@ export function AILogos() {
           key={platform.name}
           className={cn(
             "flex items-center gap-2 px-4 py-2 rounded-full glass border border-white/5",
-            "hover:border-white/10 transition-all duration-300 hover:scale-105 cursor-default",
+            "hover:border-primary/20 transition-all duration-300 hover:scale-105 cursor-default",
             "animate-fade-in"
           )}
           style={{ animationDelay: `${index * 0.1}s` }}

@@ -47,7 +47,7 @@ function ScanVisual() {
         </div>
       </div>
       <div className="h-1 w-full bg-muted rounded-full mb-6 overflow-hidden">
-        <div className="h-full bg-gradient-to-r from-primary to-glow-purple transition-all duration-100" style={{ width: `${progress}%` }} />
+        <div className="h-full bg-gradient-to-r from-primary to-amber-600 transition-all duration-100" style={{ width: `${progress}%` }} />
       </div>
       <div className="space-y-3">
         {scanItems.map((item, index) => (
@@ -61,7 +61,7 @@ function ScanVisual() {
             }}
           >
             {item.status === "success" && <Check size={16} className="text-glow-green" />}
-            {item.status === "warning" && <AlertTriangle size={16} className="text-glow-orange" />}
+            {item.status === "warning" && <AlertTriangle size={16} className="text-amber-500" />}
             {item.status === "error" && <X size={16} className="text-destructive" />}
             <span className="font-mono text-sm text-muted-foreground">{item.label}</span>
           </div>
@@ -85,7 +85,7 @@ function GraphVisual() {
     <div ref={ref} className="glass-card rounded-2xl p-6 w-full max-w-md">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
-          <Network size={18} className="text-glow-purple" />
+          <Network size={18} className="text-amber-400" />
           <span className="font-mono text-sm text-foreground">Tourism Entity Mapping</span>
         </div>
         <div className="flex items-center gap-2">
@@ -96,10 +96,10 @@ function GraphVisual() {
       <div className="relative h-48 w-full">
         <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
           <line x1="50" y1="28" x2="72" y2="50" stroke="hsl(var(--primary) / 0.3)" strokeWidth="0.5" className={`transition-all duration-1000 ${isInView ? "opacity-100" : "opacity-0"}`} style={{ transitionDelay: "300ms" }} />
-          <line x1="80" y1="58" x2="80" y2="72" stroke="hsl(var(--glow-purple) / 0.3)" strokeWidth="0.5" className={`transition-all duration-1000 ${isInView ? "opacity-100" : "opacity-0"}`} style={{ transitionDelay: "450ms" }} />
+          <line x1="80" y1="58" x2="80" y2="72" stroke="hsl(var(--glow-amber) / 0.3)" strokeWidth="0.5" className={`transition-all duration-1000 ${isInView ? "opacity-100" : "opacity-0"}`} style={{ transitionDelay: "450ms" }} />
           <line x1="42" y1="28" x2="28" y2="45" stroke="hsl(var(--primary) / 0.3)" strokeWidth="0.5" className={`transition-all duration-1000 ${isInView ? "opacity-100" : "opacity-0"}`} style={{ transitionDelay: "400ms" }} />
           <line x1="50" y1="28" x2="50" y2="57" stroke="hsl(var(--glow-orange) / 0.3)" strokeWidth="0.5" className={`transition-all duration-1000 ${isInView ? "opacity-100" : "opacity-0"}`} style={{ transitionDelay: "500ms" }} />
-          <line x1="72" y1="50" x2="58" y2="60" stroke="hsl(var(--glow-purple) / 0.3)" strokeWidth="0.5" className={`transition-all duration-1000 ${isInView ? "opacity-100" : "opacity-0"}`} style={{ transitionDelay: "550ms" }} />
+          <line x1="72" y1="50" x2="58" y2="60" stroke="hsl(var(--glow-amber) / 0.3)" strokeWidth="0.5" className={`transition-all duration-1000 ${isInView ? "opacity-100" : "opacity-0"}`} style={{ transitionDelay: "550ms" }} />
         </svg>
         {nodes.map((node, index) => (
           <div key={node.id} className={`absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-700 ${isInView ? "opacity-100 scale-100" : "opacity-0 scale-50"}`} style={{ left: `${node.x}%`, top: `${node.y}%`, transitionDelay: `${index * 100}ms` }}>
@@ -117,7 +117,7 @@ function MetricsVisual() {
   const { ref, isInView } = useInView(0.5);
   const metrics = [
     { label: "AI Visibility", value: "+42%", trend: "up", color: "primary" },
-    { label: "AI Recommendations", value: "89", trend: "up", color: "glow-purple" },
+    { label: "AI Recommendations", value: "89", trend: "up", color: "glow-amber" },
     { label: "Booking Signals", value: "31 new", trend: "up", color: "glow-orange" },
   ];
 
@@ -125,7 +125,7 @@ function MetricsVisual() {
     <div ref={ref} className="glass-card rounded-2xl p-6 w-full max-w-md">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
-          <TrendingUp size={18} className="text-glow-orange" />
+          <TrendingUp size={18} className="text-amber-500" />
           <span className="font-mono text-sm text-foreground">Weekly Performance</span>
         </div>
         <div className="flex items-center gap-2">
@@ -139,13 +139,13 @@ function MetricsVisual() {
             <div className="flex items-center justify-between">
               <span className="text-muted-foreground text-sm">{metric.label}</span>
               <div className="flex items-center gap-2">
-                <span className={`text-xl font-bold ${metric.color === "primary" ? "text-primary" : metric.color === "glow-purple" ? "text-glow-purple" : "text-glow-orange"}`}>{metric.value}</span>
+                <span className={`text-xl font-bold ${metric.color === "primary" ? "text-primary" : metric.color === "glow-amber" ? "text-amber-400" : "text-amber-500"}`}>{metric.value}</span>
                 <TrendingUp size={16} className="text-glow-green" />
               </div>
             </div>
             <div className="flex items-end gap-1 mt-3 h-8">
               {[40, 55, 45, 70, 60, 85, 90].map((height, i) => (
-                <div key={i} className={`flex-1 rounded-sm transition-all duration-500 ${metric.color === "primary" ? "bg-primary/40" : metric.color === "glow-purple" ? "bg-glow-purple/40" : "bg-glow-orange/40"}`} style={{ height: isInView ? `${height}%` : "10%", transitionDelay: `${index * 150 + i * 50}ms` }} />
+                <div key={i} className={`flex-1 rounded-sm transition-all duration-500 ${metric.color === "primary" ? "bg-primary/40" : metric.color === "glow-amber" ? "bg-amber-400/40" : "bg-amber-500/40"}`} style={{ height: isInView ? `${height}%` : "10%", transitionDelay: `${index * 150 + i * 50}ms` }} />
               ))}
             </div>
           </div>
@@ -168,14 +168,14 @@ const steps = [
     title: "Translate for AI Travel Agents",
     description: "We structure your content so AI reads it as trusted travel facts. Think of it as teaching ChatGPT your rooms, menus, tours, and unique experiences — in a language AI understands and recommends.",
     Visual: GraphVisual,
-    gradient: "from-glow-purple/20 to-glow-purple/5",
+    gradient: "from-amber-400/20 to-amber-400/5",
   },
   {
     number: "03",
     title: "Monitor & Get More Bookings",
     description: "Track your AI visibility weekly and discover new tourism opportunities. See exactly when AI platforms recommend your business to travelers planning their next trip.",
     Visual: MetricsVisual,
-    gradient: "from-glow-orange/20 to-glow-orange/5",
+    gradient: "from-amber-500/20 to-amber-500/5",
   },
 ];
 
