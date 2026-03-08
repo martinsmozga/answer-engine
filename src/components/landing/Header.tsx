@@ -68,6 +68,7 @@ export function Header() {
                 <a
                   key={link.href}
                   href={link.href}
+                  onClick={(e) => handleAnchorClick(e, link.href)}
                   className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-white/5"
                 >
                   {link.label}
