@@ -81,12 +81,12 @@ const faqs = [
 ];
 
 const howToSteps = [
-  { name: "Unblock AI Crawlers", text: "Audit your robots.txt to ensure GPTBot, ClaudeBot, and PerplexityBot are not blocked. If they can't crawl you, nothing else matters." },
-  { name: "Ensure Server-Side Rendering", text: "AI crawlers typically don't execute JavaScript. Verify your critical content is in the initial HTML response, not loaded client-side." },
-  { name: "Implement Schema Markup", text: "Add Article, FAQPage, Organization, and Product JSON-LD to every relevant page. This helps retrieval systems disambiguate your page type." },
-  { name: "Structure for Extractability", text: "Reformat headings as questions. Place concise answers directly below. Add dense FAQ sections to high-value pages." },
-  { name: "Establish Entity Clarity", text: "Define your brand entity explicitly within the first 100 words. Use synonyms and related entities to build semantic coverage." },
-  { name: "Monitor and Iterate", text: "Track AI referral traffic, brand mentions in AI responses, and competitor citation patterns. Adjust content based on what gets cited." },
+  { name: "Unblock AI Travel Crawlers", text: "Audit your robots.txt to ensure GPTBot, ClaudeBot, and PerplexityBot are not blocked. If AI travel assistants can't crawl your hotel or restaurant website, travelers will never find you." },
+  { name: "Ensure Server-Side Rendering", text: "AI crawlers typically don't execute JavaScript. Verify your rooms, menus, tours, and pricing are in the initial HTML response, not loaded client-side." },
+  { name: "Implement Tourism Schema Markup", text: "Add Hotel, Restaurant, TouristAttraction, FAQPage, and Organization JSON-LD to every relevant page. This helps AI understand your tourism business type." },
+  { name: "Structure for Travel Query Extractability", text: "Reformat headings as travel questions like 'What makes this hotel special?' Place concise answers directly below. Add dense FAQ sections." },
+  { name: "Establish Tourism Entity Clarity", text: "Define your tourism business explicitly within the first 100 words: location, type, unique offerings, and pricing. Use travel-specific synonyms." },
+  { name: "Monitor and Iterate", text: "Track AI referral traffic from travelers, brand mentions in AI travel responses, and competitor citation patterns. Adjust content based on what gets recommended." },
 ];
 
 /* ── JSON-LD schemas (AI Retrieval & GEO optimized) ── */
