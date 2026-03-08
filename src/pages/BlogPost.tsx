@@ -612,10 +612,10 @@ export default function BlogPost() {
               {/* ─── CTA ─── */}
               <section className="rounded-2xl border border-primary/20 bg-primary/5 p-8 sm:p-12 text-center">
                 <h2 className="text-2xl font-bold text-foreground mb-3">
-                  Is Your Brand Visible to AI Search?
+                  Can AI Travel Assistants Find Your Business?
                 </h2>
                 <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-                  Run a free AI search audit and discover exactly how ChatGPT, Perplexity, and Google AI Overviews see your brand — in under 60 seconds.
+                  Run a free AI visibility audit and discover exactly how ChatGPT, Perplexity, and Google AI Overviews see your hotel, restaurant, or tour — in under 60 seconds.
                 </p>
                 <Link
                   to="/"
