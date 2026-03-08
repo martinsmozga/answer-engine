@@ -447,24 +447,11 @@ export default function BlogPost() {
                   For procedural content, use numbered steps with clear action verbs. This is the AI Readiness Cascade for getting your brand cited:
                 </p>
                 <div className="my-6">
-                  <Step n={1} title="Unblock AI Crawlers">
-                    Audit your robots.txt to ensure GPTBot, ClaudeBot, and PerplexityBot are not blocked. If they can't crawl you, nothing else matters.
-                  </Step>
-                  <Step n={2} title="Ensure Server-Side Rendering">
-                    AI crawlers typically don't execute JavaScript. Verify your critical content is in the initial HTML response, not loaded client-side.
-                  </Step>
-                  <Step n={3} title="Implement Schema Markup">
-                    Add Article, FAQPage, Organization, and Product JSON-LD to every relevant page. This helps retrieval systems disambiguate your page type.
-                  </Step>
-                  <Step n={4} title="Structure for Extractability">
-                    Reformat headings as questions. Place concise answers directly below. Add dense FAQ sections to high-value pages.
-                  </Step>
-                  <Step n={5} title="Establish Entity Clarity">
-                    Define your brand entity explicitly within the first 100 words. Use synonyms and related entities to build semantic coverage.
-                  </Step>
-                  <Step n={6} title="Monitor and Iterate">
-                    Track AI referral traffic, brand mentions in AI responses, and competitor citation patterns. Adjust content based on what gets cited.
-                  </Step>
+                  {howToSteps.map((step, i) => (
+                    <Step key={i} n={i + 1} title={step.name}>
+                      {step.text}
+                    </Step>
+                  ))}
                 </div>
               </section>
 
