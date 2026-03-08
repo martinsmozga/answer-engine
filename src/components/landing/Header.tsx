@@ -5,8 +5,8 @@ import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Why Now", href: "#wake-up" },
-  { label: "The Leak", href: "#money-leak" },
-  { label: "Execution", href: "#execution" },
+  { label: "How It Works", href: "#how-it-works" },
+  { label: "See It Live", href: "#social-proof" },
   { label: "Pricing", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
   { label: "Blog", href: "/blog", isRoute: true },
@@ -83,7 +83,7 @@ export function Header() {
               Sign in
             </Button>
             <Button variant="glow" size="sm">
-              Audit My Site
+              Check My Visibility
             </Button>
           </div>
 
@@ -126,7 +126,7 @@ export function Header() {
                   Sign in
                 </Button>
                 <Button variant="glow" className="w-full justify-center">
-                  Audit My Site
+                  Check My Visibility
                 </Button>
               </div>
             </nav>
