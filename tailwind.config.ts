@@ -58,7 +58,7 @@ export default {
         },
         glow: {
           DEFAULT: "hsl(var(--glow))",
-          purple: "hsl(var(--glow-purple))",
+          amber: "hsl(var(--glow-amber))",
           orange: "hsl(var(--glow-orange))",
           green: "hsl(var(--glow-green))",
         },

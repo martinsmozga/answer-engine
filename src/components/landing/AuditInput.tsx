@@ -31,10 +31,10 @@ export function AuditInput() {
           className="absolute inset-0 rounded-2xl opacity-60"
           style={{
             background: `linear-gradient(var(--flow-angle, 0deg), 
-              hsl(330 100% 60% / 0.8), 
-              hsl(280 80% 60% / 0.6), 
-              hsl(25 100% 55% / 0.5), 
-              hsl(330 100% 60% / 0.8))`,
+              hsl(43 90% 55% / 0.7), 
+              hsl(38 80% 45% / 0.5), 
+              hsl(25 90% 50% / 0.4), 
+              hsl(43 90% 55% / 0.7))`,
             backgroundSize: '300% 300%',
             animation: 'flowGradient 8s ease-in-out infinite',
           }}
@@ -58,7 +58,7 @@ export function AuditInput() {
             <div 
               className="pointer-events-none absolute inset-0 rounded-2xl transition-opacity duration-300"
               style={{
-                background: `radial-gradient(400px circle at ${mousePosition.x}px ${mousePosition.y}px, hsl(330 100% 60% / 0.15), transparent 50%)`,
+                background: `radial-gradient(400px circle at ${mousePosition.x}px ${mousePosition.y}px, hsl(43 90% 55% / 0.12), transparent 50%)`,
               }}
             />
           )}
@@ -129,18 +129,18 @@ export function AuditInput() {
         @keyframes hueOscillation {
           0%, 100% {
             background: 
-              radial-gradient(ellipse at 30% 20%, hsl(330 100% 60% / 0.1), transparent 50%),
-              radial-gradient(ellipse at 70% 80%, hsl(280 80% 60% / 0.08), transparent 50%);
+              radial-gradient(ellipse at 30% 20%, hsl(43 90% 55% / 0.08), transparent 50%),
+              radial-gradient(ellipse at 70% 80%, hsl(38 80% 45% / 0.06), transparent 50%);
           }
           33% {
             background: 
-              radial-gradient(ellipse at 60% 30%, hsl(280 80% 60% / 0.1), transparent 50%),
-              radial-gradient(ellipse at 30% 70%, hsl(25 100% 55% / 0.08), transparent 50%);
+              radial-gradient(ellipse at 60% 30%, hsl(38 80% 45% / 0.08), transparent 50%),
+              radial-gradient(ellipse at 30% 70%, hsl(25 90% 50% / 0.06), transparent 50%);
           }
           66% {
             background: 
-              radial-gradient(ellipse at 40% 70%, hsl(25 100% 55% / 0.1), transparent 50%),
-              radial-gradient(ellipse at 70% 30%, hsl(330 100% 60% / 0.08), transparent 50%);
+              radial-gradient(ellipse at 40% 70%, hsl(25 90% 50% / 0.08), transparent 50%),
+              radial-gradient(ellipse at 70% 30%, hsl(43 90% 55% / 0.06), transparent 50%);
           }
         }
       `}</style>

@@ -52,7 +52,7 @@ function AISimulation() {
   
   return (
     <div ref={ref} className="relative">
-      <div className="absolute -inset-8 bg-gradient-to-r from-primary/20 via-violet-500/15 to-orange-500/20 rounded-[2rem] blur-3xl opacity-50" />
+      <div className="absolute -inset-8 bg-gradient-to-r from-primary/15 via-amber-600/10 to-primary/15 rounded-[2rem] blur-3xl opacity-50" />
       <div className="absolute -inset-4 bg-gradient-to-br from-primary/10 to-transparent rounded-3xl blur-xl opacity-70" />
       
       <div className={cn(
@@ -88,7 +88,7 @@ function AISimulation() {
                       <span className="text-lg">{brand.icon}</span>
                       <h4 className="font-semibold text-white text-sm">{brand.name}</h4>
                       {brand.highlighted && (
-                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-primary text-white font-semibold uppercase tracking-wide shadow-sm">
+                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-primary text-primary-foreground font-semibold uppercase tracking-wide shadow-sm">
                           You're here
                         </span>
                       )}
@@ -102,7 +102,7 @@ function AISimulation() {
         </div>
         
         <div className={cn(
-          "absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-2 bg-gradient-to-r from-primary to-violet-500 text-white text-xs font-semibold rounded-full shadow-lg shadow-primary/30 transition-all duration-700 delay-700",
+          "absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-2 bg-gradient-to-r from-primary to-amber-600 text-primary-foreground text-xs font-semibold rounded-full shadow-lg shadow-primary/30 transition-all duration-700 delay-700",
           isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
         )}>
           Live AI Travel Response Preview
@@ -119,7 +119,7 @@ export function ExecutionSection() {
     <section ref={sectionRef} id="social-proof" className="relative py-24 md:py-32 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
       <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/3 left-0 w-[500px] h-[500px] bg-violet-500/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/3 left-0 w-[500px] h-[500px] bg-amber-600/5 rounded-full blur-3xl" />
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6">
         <div className={cn("text-center max-w-3xl mx-auto mb-16 transition-all duration-700", isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
