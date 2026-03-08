@@ -8,15 +8,15 @@ import { ArrowLeft, Clock, Calendar, RefreshCw, User, ExternalLink, CheckCircle,
 /* ── static data ───────────────────────────────── */
 
 const defined = {
-  title: "How AI Search Engines Recommend Brands — And How to Get Cited",
+  title: "How AI Travel Assistants Recommend Hotels & Restaurants — And How to Get Cited",
   description:
-    "AI search optimization (AEO) is the practice of structuring your website so AI platforms like ChatGPT, Perplexity, and Google AI Overviews can discover, extract, and cite your brand. This guide covers entity clarity, structured data, content architecture, and monitoring — everything you need to move from invisible to recommended.",
+    "AI travel optimization is the practice of structuring your tourism website so AI platforms like ChatGPT, Perplexity, and Google AI Overviews can discover, extract, and recommend your hotel, restaurant, tour, or travel business to travelers. This guide covers entity clarity, structured data, content architecture, and monitoring — everything tourism businesses need to move from invisible to recommended.",
   author: {
     name: "Aisearche Editorial",
-    role: "AI Search Strategy Team",
+    role: "AI Tourism Strategy Team",
     avatar: "A",
-    bio: "The Aisearche Editorial team comprises AI search strategists, data scientists, and former search engineers from Google and Microsoft. With over 40 combined years of experience in search technology, the team publishes original research on AI retrieval systems, generative engine optimization, and brand citation patterns across ChatGPT, Perplexity, and Google AI Overviews.",
-    credentials: ["Former Google Search Quality team", "Published in ACM SIGIR", "Contributors to Schema.org"],
+    bio: "The Aisearche Editorial team comprises AI search strategists, tourism technology specialists, and former search engineers from Google and Microsoft. With over 40 combined years of experience in search and travel technology, the team publishes original research on AI retrieval systems, generative engine optimization, and tourism business citation patterns across ChatGPT, Perplexity, and Google AI Overviews.",
+    credentials: ["Former Google Search Quality team", "Published in ACM SIGIR", "Tourism Tech Advisory Board"],
   },
   reviewedBy: "Dr. Sarah Chen, PhD in Information Retrieval — MIT CSAIL",
   readTime: "18 min read",
@@ -81,12 +81,12 @@ const faqs = [
 ];
 
 const howToSteps = [
-  { name: "Unblock AI Crawlers", text: "Audit your robots.txt to ensure GPTBot, ClaudeBot, and PerplexityBot are not blocked. If they can't crawl you, nothing else matters." },
-  { name: "Ensure Server-Side Rendering", text: "AI crawlers typically don't execute JavaScript. Verify your critical content is in the initial HTML response, not loaded client-side." },
-  { name: "Implement Schema Markup", text: "Add Article, FAQPage, Organization, and Product JSON-LD to every relevant page. This helps retrieval systems disambiguate your page type." },
-  { name: "Structure for Extractability", text: "Reformat headings as questions. Place concise answers directly below. Add dense FAQ sections to high-value pages." },
-  { name: "Establish Entity Clarity", text: "Define your brand entity explicitly within the first 100 words. Use synonyms and related entities to build semantic coverage." },
-  { name: "Monitor and Iterate", text: "Track AI referral traffic, brand mentions in AI responses, and competitor citation patterns. Adjust content based on what gets cited." },
+  { name: "Unblock AI Travel Crawlers", text: "Audit your robots.txt to ensure GPTBot, ClaudeBot, and PerplexityBot are not blocked. If AI travel assistants can't crawl your hotel or restaurant website, travelers will never find you." },
+  { name: "Ensure Server-Side Rendering", text: "AI crawlers typically don't execute JavaScript. Verify your rooms, menus, tours, and pricing are in the initial HTML response, not loaded client-side." },
+  { name: "Implement Tourism Schema Markup", text: "Add Hotel, Restaurant, TouristAttraction, FAQPage, and Organization JSON-LD to every relevant page. This helps AI understand your tourism business type." },
+  { name: "Structure for Travel Query Extractability", text: "Reformat headings as travel questions like 'What makes this hotel special?' Place concise answers directly below. Add dense FAQ sections." },
+  { name: "Establish Tourism Entity Clarity", text: "Define your tourism business explicitly within the first 100 words: location, type, unique offerings, and pricing. Use travel-specific synonyms." },
+  { name: "Monitor and Iterate", text: "Track AI referral traffic from travelers, brand mentions in AI travel responses, and competitor citation patterns. Adjust content based on what gets recommended." },
 ];
 
 /* ── JSON-LD schemas (AI Retrieval & GEO optimized) ── */
@@ -101,7 +101,7 @@ function JsonLdScripts() {
       "@type": "Organization",
       name: "Aisearche",
       url: "https://aisearche.com",
-      description: "Aisearche is the AI sales engine that monitors how AI platforms recommend brands and optimizes your presence across ChatGPT, Perplexity, and Google AI Overviews.",
+      description: "Aisearche is the AI visibility platform for tourism and travel businesses, helping hotels, restaurants, and tour operators get recommended by AI travel assistants like ChatGPT, Perplexity, and Google AI Overviews.",
       sameAs: ["https://twitter.com/aisearche", "https://linkedin.com/company/aisearche"],
     },
     publisher: {
@@ -160,9 +160,9 @@ function JsonLdScripts() {
     "@type": "Organization",
     name: "Aisearche",
     url: "https://aisearche.com",
-    description: "Aisearche is the AI sales engine that monitors how AI platforms recommend brands and optimizes your presence across ChatGPT, Perplexity, and Google AI Overviews.",
+    description: "Aisearche is the AI visibility platform for tourism and travel businesses, helping hotels, restaurants, and tour operators get recommended by AI travel assistants like ChatGPT, Perplexity, and Google AI Overviews.",
     sameAs: ["https://twitter.com/aisearche", "https://linkedin.com/company/aisearche"],
-    knowsAbout: ["AI Search Optimization", "Answer Engine Optimization", "Generative Engine Optimization", "Structured Data", "Schema Markup"],
+    knowsAbout: ["AI Tourism Optimization", "Travel AI Visibility", "Hotel AI Search", "Restaurant AI Recommendations", "Tourism Structured Data"],
   };
 
   const breadcrumbSchema = {
@@ -612,10 +612,10 @@ export default function BlogPost() {
               {/* ─── CTA ─── */}
               <section className="rounded-2xl border border-primary/20 bg-primary/5 p-8 sm:p-12 text-center">
                 <h2 className="text-2xl font-bold text-foreground mb-3">
-                  Is Your Brand Visible to AI Search?
+                  Can AI Travel Assistants Find Your Business?
                 </h2>
                 <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-                  Run a free AI search audit and discover exactly how ChatGPT, Perplexity, and Google AI Overviews see your brand — in under 60 seconds.
+                  Run a free AI visibility audit and discover exactly how ChatGPT, Perplexity, and Google AI Overviews see your hotel, restaurant, or tour — in under 60 seconds.
                 </p>
                 <Link
                   to="/"

@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Globe, Sparkles } from "lucide-react";
 
 const options = [
-  { id: "high-ticket", label: "My High-Ticket Sales", icon: "💎" },
-  { id: "products", label: "My Best-Selling Products", icon: "📦" },
-  { id: "services", label: "My Services", icon: "⚙️" },
+  { id: "hotel", label: "Hotel / Resort", icon: "🏨" },
+  { id: "restaurant", label: "Restaurant / Café", icon: "🍽️" },
+  { id: "tour", label: "Tour / Experience", icon: "🗺️" },
 ];
 
 export function AuditInput() {
@@ -26,9 +26,7 @@ export function AuditInput() {
 
   return (
     <div className="w-full max-w-2xl mx-auto px-4 sm:px-0">
-      {/* Main Input Card with flowing border */}
       <div className="relative rounded-2xl p-[2px] overflow-hidden">
-        {/* Animated flowing gradient border */}
         <div 
           className="absolute inset-0 rounded-2xl opacity-60"
           style={{
@@ -42,7 +40,6 @@ export function AuditInput() {
           }}
         />
         
-        {/* Inner card */}
         <div 
           ref={cardRef}
           onMouseMove={handleMouseMove}
@@ -50,7 +47,6 @@ export function AuditInput() {
           onMouseLeave={() => setIsHovering(false)}
           className="relative glass-card rounded-2xl p-5 sm:p-6 md:p-8 bg-card overflow-hidden"
         >
-          {/* Soft hue oscillation background layer */}
           <div 
             className="pointer-events-none absolute inset-0 rounded-2xl"
             style={{
@@ -58,7 +54,6 @@ export function AuditInput() {
             }}
           />
 
-          {/* Flashlight glow overlay */}
           {isHovering && (
             <div 
               className="pointer-events-none absolute inset-0 rounded-2xl transition-opacity duration-300"
@@ -71,10 +66,9 @@ export function AuditInput() {
           <div className="relative z-10">
             <div className="flex items-center gap-2 text-xs font-medium text-primary mb-4">
               <Sparkles size={14} />
-              <span>Instant audit</span>
+              <span>Free AI visibility check</span>
             </div>
 
-            {/* Domain Input */}
             <div className="relative mb-5 sm:mb-6">
               <div className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground">
                 <Globe size={18} />
@@ -83,17 +77,15 @@ export function AuditInput() {
                 type="text"
                 value={domain}
                 onChange={(e) => setDomain(e.target.value)}
-                placeholder="https://your-business.com"
+                placeholder="https://your-hotel-or-business.com"
                 className="w-full h-12 sm:h-14 pl-12 pr-4 bg-background/50 border border-border/50 rounded-xl text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all text-sm sm:text-base"
               />
             </div>
 
-            {/* Options Label */}
             <p className="text-sm text-muted-foreground mb-3">
-              What do you want AI to sell for you?
+              What type of travel business are you?
             </p>
 
-            {/* Options Grid - Mobile stacked, 3 columns on sm+ */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 mb-5 sm:mb-6">
               {options.map((option) => (
                 <button
@@ -111,19 +103,16 @@ export function AuditInput() {
               ))}
             </div>
 
-            {/* CTA Button */}
             <Button variant="hero" size="xl" className="w-full group min-h-[56px] sm:min-h-[48px]">
-              <span>Audit My AI Sales Potential</span>
+              <span>Check If AI Can See My Business</span>
               <ArrowRight
                 size={18}
                 className="group-hover:translate-x-1 transition-transform"
               />
             </Button>
 
-            {/* Footer Text */}
             <p className="text-xs text-muted-foreground/60 text-center mt-4">
-              Built on modern infrastructure for instant analysis. No credit card
-              required.
+              Instant results. No credit card required. See how AI travel assistants view your business.
             </p>
           </div>
         </div>
@@ -131,28 +120,12 @@ export function AuditInput() {
 
       <style>{`
         @keyframes flowGradient {
-          0% {
-            background-position: 0% 50%;
-            --flow-angle: 0deg;
-          }
-          25% {
-            background-position: 50% 100%;
-            --flow-angle: 90deg;
-          }
-          50% {
-            background-position: 100% 50%;
-            --flow-angle: 180deg;
-          }
-          75% {
-            background-position: 50% 0%;
-            --flow-angle: 270deg;
-          }
-          100% {
-            background-position: 0% 50%;
-            --flow-angle: 360deg;
-          }
+          0% { background-position: 0% 50%; --flow-angle: 0deg; }
+          25% { background-position: 50% 100%; --flow-angle: 90deg; }
+          50% { background-position: 100% 50%; --flow-angle: 180deg; }
+          75% { background-position: 50% 0%; --flow-angle: 270deg; }
+          100% { background-position: 0% 50%; --flow-angle: 360deg; }
         }
-        
         @keyframes hueOscillation {
           0%, 100% {
             background: 
