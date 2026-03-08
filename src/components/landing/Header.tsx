@@ -98,7 +98,7 @@ export function Header() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border/50 animate-fade-in">
+          <div className="md:hidden py-4 border-t border-border/50 bg-background/95 backdrop-blur-xl animate-fade-in">
             <nav className="flex flex-col gap-1">
               {navLinks.map((link) =>
                 (link as any).isRoute ? (
