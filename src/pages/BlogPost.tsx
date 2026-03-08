@@ -217,22 +217,38 @@ function TableOfContents() {
 
 function AuthorBlock() {
   return (
-    <div className="flex items-center gap-4 border-b border-border pb-8 mb-10">
-      <div className="w-14 h-14 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xl shrink-0">
-        {defined.author.avatar}
+    <div className="border-b border-border pb-8 mb-10">
+      <div className="flex items-center gap-4 mb-4">
+        <div className="w-14 h-14 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xl shrink-0">
+          {defined.author.avatar}
+        </div>
+        <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6 text-sm text-muted-foreground">
+          <span className="font-medium text-foreground">{defined.author.name}</span>
+          <span className="flex items-center gap-1.5">
+            <Clock size={14} /> {defined.readTime}
+          </span>
+          <span className="flex items-center gap-1.5">
+            <Calendar size={14} /> Published: {defined.published}
+          </span>
+          <span className="flex items-center gap-1.5">
+            <RefreshCw size={14} /> Updated: {defined.updated}
+          </span>
+        </div>
       </div>
-      <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6 text-sm text-muted-foreground">
-        <span className="font-medium text-foreground">{defined.author.name}</span>
-        <span className="flex items-center gap-1.5">
-          <Clock size={14} /> {defined.readTime}
-        </span>
-        <span className="flex items-center gap-1.5">
-          <Calendar size={14} /> Published: {defined.published}
-        </span>
-        <span className="flex items-center gap-1.5">
-          <RefreshCw size={14} /> Updated: {defined.updated}
-        </span>
+      <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+        {defined.author.bio}
+      </p>
+      <div className="flex flex-wrap gap-3 mb-3">
+        {defined.author.credentials.map((c, i) => (
+          <span key={i} className="inline-flex items-center gap-1.5 text-xs text-primary bg-primary/10 px-3 py-1 rounded-full">
+            <Award size={12} /> {c}
+          </span>
+        ))}
       </div>
+      <p className="text-xs text-muted-foreground flex items-center gap-1.5">
+        <Shield size={12} className="text-primary" />
+        Reviewed by {defined.reviewedBy}
+      </p>
     </div>
   );
 }
