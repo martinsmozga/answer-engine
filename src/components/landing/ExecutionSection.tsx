@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { Check } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 
 const aiResponseBrands = [
@@ -123,39 +121,8 @@ export function ExecutionSection() {
           </p>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-24">
-          <div className="order-2 lg:order-1">
-            <AISimulation />
-          </div>
-          
-          <div className={cn("order-1 lg:order-2 space-y-8 transition-all duration-700 delay-200", isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
-            <div className="space-y-5">
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground leading-tight">
-                We built this because tourism businesses were being left out.
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                When travelers started asking ChatGPT "best hotels in Santorini" instead of searching on Google, we noticed most tourism businesses were completely invisible to AI — no mentions, no recommendations, no bookings.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                So we built the tool that makes hotels, restaurants, cafés, tour operators, and travel agencies visible to every AI travel assistant.
-              </p>
-            </div>
-            
-            <div className="space-y-4 pt-2">
-              {[
-                "Real-time monitoring of AI travel recommendations",
-                "See when AI mentions your hotel, restaurant, or tour",
-                "Built specifically for the tourism & hospitality industry",
-              ].map((point, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Check className="w-3 h-3 text-primary" />
-                  </div>
-                  <p className="text-foreground/80 text-sm leading-relaxed">{point}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="max-w-3xl mx-auto">
+          <AISimulation />
         </div>
         
         <div className={cn("max-w-4xl mx-auto mb-20 transition-all duration-700 delay-100", isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
