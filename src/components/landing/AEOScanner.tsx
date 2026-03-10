@@ -16,6 +16,7 @@ function useAnimatedValue(target: number, duration: number, started: boolean) {
   const [value, setValue] = useState(0);
   useEffect(() => {
     if (!started) return;
+    setValue(0);
     let start: number;
     let raf: number;
     const animate = (ts: number) => {
@@ -29,6 +30,37 @@ function useAnimatedValue(target: number, duration: number, started: boolean) {
     return () => cancelAnimationFrame(raf);
   }, [target, duration, started]);
   return value;
+}
+
+function MetricRow({ label, score, color, visible }: { label: string; score: number; color: string; visible: boolean }) {
+  const barValue = useAnimatedValue(score, 1200, visible);
+  const scoreColor = score >= 85 ? "text-primary" : score >= 70 ? "text-glow-green" : score >= 60 ? "text-glow-amber" : "text-destructive";
+
+  return (
+    <div
+      className="transition-all duration-500"
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(8px)",
+      }}
+    >
+      <div className="flex items-center justify-between mb-1.5">
+        <span className="text-foreground text-sm font-medium">{label}</span>
+        <span className={`text-sm font-bold ${scoreColor}`}>
+          {visible ? barValue : 0}/100
+        </span>
+      </div>
+      <div className="h-1.5 rounded-full bg-muted/50 overflow-hidden">
+        <div
+          className="h-full rounded-full transition-all duration-1000 ease-out"
+          style={{
+            width: `${visible ? barValue : 0}%`,
+            background: color,
+          }}
+        />
+      </div>
+    </div>
+  );
 }
 
 export function AEOScanner() {
@@ -71,9 +103,7 @@ export function AEOScanner() {
           <div className="absolute inset-0 z-10 pointer-events-none">
             <div
               className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-80"
-              style={{
-                animation: "scanLine 1.2s ease-in-out infinite",
-              }}
+              style={{ animation: "scanLine 1.2s ease-in-out infinite" }}
             />
           </div>
         )}
@@ -118,38 +148,15 @@ export function AEOScanner() {
 
         {/* Metrics Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 px-6 py-6">
-          {metrics.map((m, i) => {
-            const visible = showResults || scanPhase > Math.floor(i / 2);
-            const barValue = useAnimatedValue(m.score, 1200, visible);
-            const scoreColor = m.score >= 85 ? "text-primary" : m.score >= 70 ? "text-glow-green" : m.score >= 60 ? "text-glow-amber" : "text-destructive";
-
-            return (
-              <div
-                key={m.label}
-                className="transition-all duration-500"
-                style={{
-                  opacity: visible ? 1 : 0,
-                  transform: visible ? "translateY(0)" : "translateY(8px)",
-                }}
-              >
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-foreground text-sm font-medium">{m.label}</span>
-                  <span className={`text-sm font-bold ${scoreColor}`}>
-                    {visible ? barValue : 0}/100
-                  </span>
-                </div>
-                <div className="h-1.5 rounded-full bg-muted/50 overflow-hidden">
-                  <div
-                    className="h-full rounded-full transition-all duration-1000 ease-out"
-                    style={{
-                      width: `${visible ? barValue : 0}%`,
-                      background: m.color,
-                    }}
-                  />
-                </div>
-              </div>
-            );
-          })}
+          {metrics.map((m, i) => (
+            <MetricRow
+              key={m.label}
+              label={m.label}
+              score={m.score}
+              color={m.color}
+              visible={showResults || scanPhase > Math.floor(i / 2)}
+            />
+          ))}
         </div>
 
         {/* Overall Score */}
