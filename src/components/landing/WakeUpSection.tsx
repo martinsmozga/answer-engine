@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { TrendingUp, Users, Zap, Target } from "lucide-react";
+import { AEOScanner } from "./AEOScanner";
 
 function useCountUp(end: number, duration: number = 2000, startOnView: boolean = true) {
   const [count, setCount] = useState(0);
