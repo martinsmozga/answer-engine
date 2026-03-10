@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { TrendingUp, Users, Zap, Target } from "lucide-react";
+import { AEOScanner } from "./AEOScanner";
 
 function useCountUp(end: number, duration: number = 2000, startOnView: boolean = true) {
   const [count, setCount] = useState(0);
@@ -147,7 +148,15 @@ export function WakeUpSection() {
           })}
         </div>
 
-        <div className="mt-20 text-center">
+        {/* AEO Scanner */}
+        <div className="mt-20 mb-16">
+          <p className="text-center text-muted-foreground text-sm mb-8 uppercase tracking-widest">
+            See how AI scores your brand
+          </p>
+          <AEOScanner />
+        </div>
+
+        <div className="mt-12 text-center">
           <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full glass border border-primary/20">
             <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
             <span className="text-muted-foreground">
